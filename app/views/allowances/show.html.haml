@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %b Amount:
+  = @allowance.amount
+%p
+  %b Started at:
+  = @allowance.started_at
+%p
+  %b Ended at:
+  = @allowance.ended_at
+%p
+  %b Account:
+  = @allowance.account
+= link_to 'Edit', edit_allowance_path(@allowance)
+|
+= link_to 'Back', allowances_path
