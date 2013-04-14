@@ -2,6 +2,7 @@ class AllowancesController < ApplicationController
   # GET /allowances
   # GET /allowances.json
   def index
+    @account = Account.find(params[:account_id])
     @allowances = Allowance.all
 
     respond_to do |format|
@@ -24,7 +25,8 @@ class AllowancesController < ApplicationController
   # GET /allowances/new
   # GET /allowances/new.json
   def new
-    @allowance = Allowance.new
+    @account = Account.find(params[:account_id])
+    @allowance = @account.allowances.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +42,8 @@ class AllowancesController < ApplicationController
   # POST /allowances
   # POST /allowances.json
   def create
-    @allowance = Allowance.new(params[:allowance])
+    @account = Account.find(params[:account_id])
+    @allowance = @account.allowances.build(params[:allowance])
 
     respond_to do |format|
       if @allowance.save
@@ -73,10 +76,11 @@ class AllowancesController < ApplicationController
   # DELETE /allowances/1.json
   def destroy
     @allowance = Allowance.find(params[:id])
+    @account = @allowance.account
     @allowance.destroy
 
     respond_to do |format|
-      format.html { redirect_to allowances_url }
+      format.html { redirect_to account_allowances_url(@account) }
       format.json { head :no_content }
     end
   end

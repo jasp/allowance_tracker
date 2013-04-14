@@ -1,10 +1,9 @@
-%h1 Listing allowances
+%h1 Listing allowances for account #{@account.name}
 %table
   %tr
     %th Amount
     %th Started at
     %th Ended at
-    %th Account
     %th
     %th
     %th
@@ -13,9 +12,8 @@
       %td= allowance.amount
       %td= allowance.started_at
       %td= allowance.ended_at
-      %td= allowance.account.name
       %td= link_to 'Show', allowance
       %td= link_to 'Edit', edit_allowance_path(allowance)
       %td= link_to 'Destroy', allowance, method: :delete, data: { confirm: 'Are you sure?' }
 %br
-= link_to 'New Allowance', new_allowance_path
+= link_to 'New Allowance', new_account_allowance_path(@account)

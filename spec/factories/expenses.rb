@@ -5,6 +5,6 @@ FactoryGirl.define do
     description "MyString"
     amount 1.5
     paid_at "2013-04-14 16:34:36"
-    account nil
+    account
   end
 end

@@ -10,7 +10,7 @@
   = @allowance.ended_at
 %p
   %b Account:
-  = @allowance.account
+  = @allowance.account.name
 = link_to 'Edit', edit_allowance_path(@allowance)
 |
-= link_to 'Back', allowances_path
+= link_to 'Back', account_allowances_path(@allowance.account)

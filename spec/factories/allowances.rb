@@ -5,6 +5,6 @@ FactoryGirl.define do
     amount 1.5
     started_at "2013-04-1"
     ended_at "2013-04-30 23:59:59"
-    account nil
+    account
   end
 end

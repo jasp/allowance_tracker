@@ -2,6 +2,7 @@ class Allowance < ActiveRecord::Base
   belongs_to :account
   attr_accessible :amount, :ended_at, :started_at
   validates_presence_of :started_at
+  validates_presence_of :account
   validate :ended_must_come_after_started
 
   def ended_must_come_after_started

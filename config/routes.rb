@@ -1,7 +1,9 @@
 AllowanceTracker::Application.routes.draw do
+  resources :accounts, shallow: true do
+    resources :allowances
+  end
+
   resources :expenses
-  resources :allowances
-  resources :accounts
 
   root :to => 'accounts#index'
 end
