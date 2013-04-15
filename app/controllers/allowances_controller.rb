@@ -3,7 +3,7 @@ class AllowancesController < ApplicationController
   # GET /allowances.json
   def index
     @account = Account.find(params[:account_id])
-    @allowances = Allowance.all
+    @allowances = @account.allowances.all
 
     respond_to do |format|
       format.html # index.html.erb

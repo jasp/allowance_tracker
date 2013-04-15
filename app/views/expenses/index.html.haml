@@ -1,10 +1,9 @@
-%h1 Listing expenses
+%h1 Listing expenses for account #{@account.name}
 %table
   %tr
     %th Description
     %th Amount
     %th Paid at
-    %th Account
     %th
     %th
     %th
@@ -13,9 +12,8 @@
       %td= expense.description
       %td= expense.amount
       %td= expense.paid_at
-      %td= expense.account.name
       %td= link_to 'Show', expense
       %td= link_to 'Edit', edit_expense_path(expense)
       %td= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' }
 %br
-= link_to 'New Expense', new_expense_path
+= link_to 'New Expense', new_account_expense_path(@account)

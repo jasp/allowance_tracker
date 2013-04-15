@@ -1,6 +1,7 @@
 class Account < ActiveRecord::Base
   attr_accessible :description, :name
   has_many :allowances
+  has_many :expenses
 
   def current_allowance(now = Time.zone.now)
     first = now.beginning_of_month
@@ -19,6 +20,14 @@ class Account < ActiveRecord::Base
       last = (a.ended_at and a.ended_at < now) ? a.ended_at : now
       sum + a.amount * months_between(a.started_at, last)
     end
+  end
+
+  def total_expenses
+    expenses.sum('amount')
+  end
+
+  def current_balance(now = Time.zone.now)
+    total_allowance(now) - total_expenses
   end
 
   private

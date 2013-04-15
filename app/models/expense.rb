@@ -3,4 +3,5 @@ class Expense < ActiveRecord::Base
   attr_accessible :amount, :description, :paid_at
   validates_presence_of :paid_at
   validates_presence_of :account
+  validates_presence_of :amount
 end

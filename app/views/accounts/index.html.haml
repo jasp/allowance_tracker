@@ -4,6 +4,7 @@
     %th Name
     %th Description
     %th Current allowance
+    %th Current balance
     %th
     %th
     %th
@@ -12,7 +13,9 @@
       %td= account.name
       %td= account.description
       %td= account.current_allowance
+      %td= account.current_balance
       %td= link_to 'Allowances', account_allowances_path(account)
+      %td= link_to 'Expenses', account_expenses_path(account)
       %td= link_to 'Show', account
       %td= link_to 'Edit', edit_account_path(account)
       %td= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' }

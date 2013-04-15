@@ -81,4 +81,25 @@ describe Account do
       expect(subject.total_allowance(now)).to eq(4400)
     end
   end
+
+  describe '#total_expenses' do
+    it "calculates sum of all expenses for account" do
+      now = Time.zone.local(2013, 5, 5)
+      subject.save!
+      subject.expenses.create(amount: 256, paid_at: now - 1.day)
+      subject.expenses.create(amount: 42, paid_at: now - 2.days)
+      expect(subject.total_expenses).to eq(298)
+    end
+  end
+
+  describe '#current_balance' do
+    it "calculates sum of all expenses for account" do
+      now = Time.zone.local(2013, 5, 5)
+      subject.save!
+      subject.expenses.create(amount: 256, paid_at: now - 1.day)
+      subject.expenses.create(amount: 42, paid_at: now - 2.days)
+      subject.allowances.create(amount: 200, started_at: now.beginning_of_month - 1.month)
+      expect(subject.current_balance(now)).to eq(400 - 298)
+    end
+  end
 end

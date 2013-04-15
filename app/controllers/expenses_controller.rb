@@ -2,7 +2,8 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = Expense.all
+    @account = Account.find(params[:account_id])
+    @expenses = @account.expenses
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +25,8 @@ class ExpensesController < ApplicationController
   # GET /expenses/new
   # GET /expenses/new.json
   def new
-    @expense = Expense.new
+    @account = Account.find(params[:account_id])
+    @expense = @account.expenses.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +42,8 @@ class ExpensesController < ApplicationController
   # POST /expenses
   # POST /expenses.json
   def create
-    @expense = Expense.new(params[:expense])
+    @account = Account.find(params[:account_id])
+    @expense = @account.expenses.build(params[:expense])
 
     respond_to do |format|
       if @expense.save
@@ -73,10 +76,11 @@ class ExpensesController < ApplicationController
   # DELETE /expenses/1.json
   def destroy
     @expense = Expense.find(params[:id])
+    @account = @expense.account
     @expense.destroy
 
     respond_to do |format|
-      format.html { redirect_to expenses_url }
+      format.html { redirect_to account_expenses_url(@account) }
       format.json { head :no_content }
     end
   end
