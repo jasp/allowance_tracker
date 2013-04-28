@@ -30,13 +30,14 @@ gem 'jquery-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # To use debugger
 # gem 'debugger'
 
 group :development do
   gem 'capistrano'
+  gem 'rvm-capistrano'
 end
 
 group :development, :test do
@@ -50,4 +51,3 @@ group :test do
   gem 'launchy'
   gem 'capybara'
 end
-gem 'rvm-capistrano'
