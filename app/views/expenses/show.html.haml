@@ -10,7 +10,7 @@
   = @expense.paid_at
 %p
   %b Account:
-  = @expense.account
+  = @expense.account.name
 = link_to 'Edit', edit_expense_path(@expense)
 |
 = link_to 'Back', account_expenses_path(@expense.account)

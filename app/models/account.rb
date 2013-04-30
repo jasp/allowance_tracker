@@ -1,7 +1,7 @@
 class Account < ActiveRecord::Base
   attr_accessible :description, :name
-  has_many :allowances
-  has_many :expenses
+  has_many :allowances, dependent: :destroy
+  has_many :expenses, dependent: :destroy
 
   def current_allowance(now = Time.zone.now)
     first = now.beginning_of_month

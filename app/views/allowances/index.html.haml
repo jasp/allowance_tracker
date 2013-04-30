@@ -12,8 +12,9 @@
       %td= allowance.amount
       %td= allowance.started_at
       %td= allowance.ended_at
-      %td= link_to 'Show', allowance
       %td= link_to 'Edit', edit_allowance_path(allowance)
       %td= link_to 'Destroy', allowance, method: :delete, data: { confirm: 'Are you sure?' }
 %br
 = link_to 'New Allowance', new_account_allowance_path(@account)
+|
+= link_to 'Back', accounts_path

@@ -12,8 +12,9 @@
       %td= expense.description
       %td= expense.amount
       %td= expense.paid_at
-      %td= link_to 'Show', expense
       %td= link_to 'Edit', edit_expense_path(expense)
       %td= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' }
 %br
 = link_to 'New Expense', new_account_expense_path(@account)
+|
+= link_to 'Back', accounts_path
